@@ -5,7 +5,7 @@ Golang library to connect to Odoo via JSON-RPC
 ## Install
 
 ```sh
-go get gitlab.com/ausuwardi/godooj
+go get github.com/ausuwardi/godooj
 ```
 
 ## Use
