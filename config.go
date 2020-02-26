@@ -2,11 +2,13 @@ package godooj
 
 import (
 	"fmt"
-	"github.com/pelletier/go-toml"
 	"os"
 	"path"
+
+	"github.com/pelletier/go-toml"
 )
 
+// OdooConfig holds Odoo connection configuration data
 type OdooConfig struct {
 	ServerAddress string
 	Database      string
@@ -14,6 +16,7 @@ type OdooConfig struct {
 	Password      string
 }
 
+// ClientConnect creates a new client from a named server configuration
 func ClientConnect(serverName string) (*Client, error) {
 	config, err := LoadOdooConfig(serverName)
 	if err != nil {
@@ -22,6 +25,7 @@ func ClientConnect(serverName string) (*Client, error) {
 	return config.CreateOdooClient()
 }
 
+// CreateOdooClient creates Odoo client based from a configuration
 func (conf *OdooConfig) CreateOdooClient() (*Client, error) {
 	return Connect(
 		conf.ServerAddress,
@@ -48,6 +52,7 @@ func lastFileExists(fileNames []string) string {
 	return result
 }
 
+// LoadOdooConfig loads odoo server configuration from file
 func LoadOdooConfig(serverName string) (*OdooConfig, error) {
 	dirs := []string{"odoo.toml"}
 	homeDir, err := os.UserHomeDir()
