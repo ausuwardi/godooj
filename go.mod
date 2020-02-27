@@ -1,4 +1,4 @@
-module godooj
+module github.com/ausuwardi/godooj
 
 go 1.13
 
